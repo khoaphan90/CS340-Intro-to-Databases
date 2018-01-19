@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+<div>
+	<h2>Genre</h2>
+	<div class="desc">Please click on a genre to edit.</div>
+	<form method="" action="/newGenre">
+		<input class="ui blue med button" id="addbtn" value="Add Genre" type="submit">
+	</form>
+</div>
+
+<div class="centered">
+ 	<div class="columns" id="genre">
+		<div class="name">Genre</div>
+		<div class="desc">Description</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<% context.forEach(function(list){ %>
+<div class="centered">
+ 	 	<div class="columns-list" id="genre">
+		<div class="name">
+						<a href="/editGenre/<%= list.genreID %>" method="get" action="/editGenre">
+				<%= list.type %>
+			</a>
+		</div>
+		<div class="desc"><%= list.description %></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<% }); %>
+
+<% include partials/footer %>
+

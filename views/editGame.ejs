@@ -1,0 +1,62 @@
+<% include partials/header %>
+
+<% for(var i = 0; i < context.length; i++){ %>
+    <div class="ui main text container segment">
+            <div class="ui huge header">Edit: <%= context[i].name %>
+        </div>
+        <form class="ui form" action="/updateGame/<%= context[i].gameID %>" method="POST">
+            <div class="field">
+                <label>Game Name</label>
+                <input type="text" name="name" value="<%= context[i].name %>" required>
+            </div>
+            <div class="field">
+                <label>Release Date</label>
+                <input type="date" name="releasedate" value="<%= context[i].releasedate %>" required>
+            </div>
+            <div class="field">
+                <label>Publisher</label>
+                <select name="publisherID" required>
+                    <optgroup>
+                        <% for(var i = 0; i < publisher.length; i++){ %>
+                        <option value="<%= publisher[i].publisherID %>"><%= publisher[i].name %></option>
+                        <% }; %>
+                    </optgroup>
+                </select>
+            </div>
+<!--             <div class="field">
+                <label>Genre</label>
+                <select name="genreID" required>
+                    <optgroup>
+                        <% genre.forEach(function(list){ %>
+                        <option value="<%= list.genreID %>"><%= list.type %></option>
+                        <% }); %>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="field">
+                <label>Platform</label>
+                <select name="platformID" required>
+                    <optgroup>
+                        <% platform.forEach(function(list){ %>
+                        <option value="<%= list.platformID %>"><%= list.name %></option>
+                        <% }); %>
+                    </optgroup>
+                </select>
+            </div> -->
+            <input class="ui green med button" value="Save" type="submit">
+        </form>
+        <% }; %>
+        
+        <% for(var i = 0; i < context.length; i++){ %>
+        <form class="ui form" action="/deleteGame/<%= context[i].gameID %>" method="GET">
+            <input class="ui red med  button" value="Delete" type="submit">
+        </form>
+        <form class="ui form" action="/game">
+            <input class="ui blue med  button" value="Cancel" type="submit">
+        </form>
+        <% }; %>
+    </div>
+
+
+<% include partials/footer %>
+

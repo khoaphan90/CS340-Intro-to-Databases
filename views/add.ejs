@@ -1,0 +1,41 @@
+<% include partials/header %>
+
+
+    <div class="ui main text container segment">
+           <div class="ui huge header">Edit: 
+            <%= rows.name %>
+        </div>
+        <form class="ui form" action="/update/<%= rows.gameID %>" method="POST">
+            <div class="field">
+                <label>Game Name</label>
+                <input type="text" name="name">
+            </div>
+            <div class="field">
+                <label>Release Date</label>
+                <input type="text" name="year">
+            </div>
+            <div class="field">
+                <label>Publisher</label>
+                <select name="pubName">
+                    <% publisher.forEach(function(list){ %>
+                        <%= list.name %>
+                        <option><%= list.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div class="field">
+                <label>Review - drop down menu here for change review score</label>
+                <select name="pubName">
+                    <% publisher.forEach(function(list){ %>
+                        <%= list.name %>
+                        <option><%= list.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <input class="ui red big basic button" type="submit">
+        </form>
+    </div>
+
+<% include partials/footer %>
+

@@ -1,0 +1,49 @@
+<% include partials/header %>
+
+
+<div>
+	<h2>Games</h2>
+	<div class="desc">Please click on a game to edit.</div>
+	<form method="" action="/newGame">
+		<input class="ui blue med button" id="addbtn" value="Add Game" type="submit">
+	</form>
+</div>
+
+ <div class="centered">
+ 	<div class="columns" id="game">
+		<div class="name">Name</div>
+		<div class="year">Release Date</div>
+		<div class="pub">Publisher</div>
+		<div class="review">IGN Review Score</div>
+		<div class="genre">Genre</div>
+		<div class="platform">Platform</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="centered">
+ 	<% for(var i = 0; i < context.length; i++){ %>
+ 	<div class="columns-list" id="game">
+		<div class="name">
+			<a href="/editGame/<%= context[i].gameID %>" method="get" action="/editGame">
+				<%= context[i].name %>
+			</a>
+		</div>
+		<div class="releasedate"><%= context[i] ? context[i].releasedate : 'N/A' %></div>
+		<div class="pub"><%= publisher[i] ? publisher[i].name : 'N/A' %></div>
+		<div class="score">
+			<% for(var j = 0; j < gscore.length; j++){ %>
+					<% if(context[i].gameID == gscore[j].gameID){ %>
+						<%= gscore[j].score %>
+					<%}%>
+			<% }; %>
+		</div> 
+		<div class="genre"><%= genre[i] ? genre[i].type : 'N/A' %></div>
+		<div class="platform"><%= platform[i] ? platform[i].name : 'N/A' %></div>
+	</div>
+	<div class="clear"></div>
+	<% }; %>
+</div>
+
+
+
+<% include partials/footer %>

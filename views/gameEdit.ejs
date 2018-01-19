@@ -1,0 +1,45 @@
+<% include partials/header %>
+
+
+<% for(var i = 0; i < context.length; i++){ %>
+    <div class="ui main text container segment">
+           <div class="ui huge header">Edit: 
+            <%= context[i].name %>
+        </div>
+        <form class="ui form" action="/update/<%= context[i].gameID %>" method="POST">
+            <div class="field">
+                <label>Game Name</label>
+                <input type="text" name="name" value="<%= context[i].name %>">
+            </div>
+            <div class="field">
+                <label>Release Date</label>
+                <input type="date" name="year" value="<%= context[i].releasedate %>">
+            </div>
+            <div class="field">
+                <label>Publisher</label>
+                <select name="pubName">
+                     <optgroup>
+                        <option value="<%= publisher[i].name %>">Select Publisher</option>
+                        <% for(var i = 0; i < publisher.length; i++){ %>
+                        <option value="<%= publisher[i].publisherID %>"><%= publisher[i].name %></option>
+                        <% }; %>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="field">
+                <label>Review - drop down menu here for change review score</label>
+            </div>
+            <input class="ui green med button" value="Save" type="submit">
+        </form>
+        <% }; %>
+        
+        <% for(var i = 0; i < context.length; i++){ %>
+        <form class="ui form" action="/deleteGame/<%= context[i].gameID %>" method="POST">
+            <input class="ui red med  button" value="Delete" type="submit">
+        </form>
+        <% }; %>
+    </div>
+
+
+<% include partials/footer %>
+

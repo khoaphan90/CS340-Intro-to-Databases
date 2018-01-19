@@ -1,0 +1,32 @@
+<% include partials/header %>
+
+<% context.forEach(function(rows){ %>
+<div class="ui main text container segment">
+       <div class="ui huge header">Edit: 
+        <%= rows.name %>
+    </div>
+    <form class="ui form" action="/update/<%= rows.gameID %>" method="POST">
+        <div class="field">
+            <label>Game Name</label>
+            <input type="text" name="name" value="<%= rows.name %>">
+        </div>
+        <div class="field">
+            <label>Year</label>
+            <input type="text" name="year" value="<%= rows.releasedate %>">
+        </div>
+        <div class="field">
+            <label>Publisher - drop down menu here for list of publishers</label>
+            <input type="text" name="publisher" value="<%= rows.publisherID %>">
+        </div>
+        <div class="field">
+            <label>Review - drop down menu here for change review score</label>
+            <input type="text" name="review" value="<%= rows.reviewID %>">
+        </div>
+
+        <input class="ui red big basic button" type="submit">
+    </form>
+</div>
+<% }); %>
+
+<% include partials/footer %>
+

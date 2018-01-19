@@ -1,0 +1,36 @@
+<% include partials/header %>
+
+<div>
+	<h2>Platform</h2>
+	<div class="desc">Click on a model to edit.</div>
+	<form method="" action="/newPlatform">
+		<input class="ui blue med button" id="addbtn" value="Add Platform" type="submit">
+	</form>
+</div>
+
+ <div class="centered">
+ 	<div class="columns" id="platform">
+		<div class="make">Make</div>
+		<div class="name">Model</div>
+		<div class='year'>Year</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="centered">
+ 	<% context.forEach(function(rows){ %>
+ 	<div class="columns-list" id="platform">
+		<div class="make"><%= rows.make %></div>
+		<div class="name">
+				<a href="/editPlatform/<%= rows.platformID %>" method="get" action="/editPlatform">
+					<%= rows.name %>
+				</a>
+			</div>
+		<div class="year"><%= rows.year ? rows.year : "N/A" %></div>
+	</div>
+	<div class="clear"></div>
+	<% }); %>
+</div>
+
+<% include partials/footer %>
+

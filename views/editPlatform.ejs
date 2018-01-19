@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<% for(var i = 0; i < context.length; i++){ %>
+    <div class="ui main text container segment">
+           <div class="ui huge header">Edit: <%= context[i].name %>
+        </div>
+        <form class="ui form" action="/updatePlatform/<%= context[i].platformID %>" method="POST">
+            <div class="field">
+                <label>Make</label>
+                <input type="text" name="make" value="<%= context[i].make %>" required>
+            </div>
+            <div class="field">
+                <label>Model</label>
+                <input type="text" name="name" value="<%= context[i].name %>" required>
+            </div>
+            <div class="field">
+                <label>Year</label>
+                <input type="date" name="year" value="<%= context[i].year %>" required>
+            </div>
+            <input class="ui green med button" value="Save" type="submit">
+        </form>
+        <% }; %>
+        
+        <% for(var i = 0; i < context.length; i++){ %>
+        <form class="ui form" action="/deletePlatform/<%= context[i].platformID %>" method="GET">
+            <input class="ui red med  button" value="Delete" type="submit">
+        </form>
+        <form class="ui form" action="/platform">
+            <input class="ui blue med  button" value="Cancel" type="submit">
+        </form>
+        <% }; %>
+    </div>
+
+<% include partials/footer %>
+

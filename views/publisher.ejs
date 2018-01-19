@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<div>
+	<h2>Publisher</h2>
+	<div class="desc">Click on a name to edit.</div>
+	<form method="" action="/newPublisher">
+		<input class="ui blue med button" id="addbtn" value="Add Publisher" type="submit">
+	</form>
+</div>
+ <div class="centered">
+ 	<div class="columns" id="pub">
+		<div class="name">Name</div>
+		<div class="location">Location</div>
+		<div class='year'>Year Established</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="centered">
+ 	<% context.forEach(function(rows){ %>
+ 	<div class="columns-list" id="pub">
+		<div class="name">
+		<a href="/editPublisher/<%= rows.publisherID %>" method="GET" action="/editPublisher">
+				<%= rows.name %>	
+			</a>
+		</div>
+		<div class="location"><%= rows.location %></div>
+		<div class="year"><%= rows.yearEstab %></div>
+	</div>
+	<div class="clear"></div>
+	<% }); %>
+</div>
+
+<% include partials/footer %>
+

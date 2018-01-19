@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+<% for(var i = 0; i < context.length; i++){ %>
+    <div class="ui main text container segment">
+           <div class="ui huge header">Edit: <%= context[i].name %>
+        </div>
+        <form class="ui form" action="/updateGenre/<%= context[i].genreID %>" method="POST">
+            <div class="field">
+                <label>Genre Title</label>
+                <input type="text" name="type" value="<%= context[i].type %>" required>
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" value="<%= context[i].description %>" required>
+                    <%= context[i].description %>
+                </textarea>
+            </div>
+            <input class="ui green med button" value="Save" type="submit">
+        </form>
+        <% }; %>
+        
+        <% for(var i = 0; i < context.length; i++){ %>
+        <form class="ui form" action="/deleteGenre/<%= context[i].genreID %>" method="GET">
+            <input class="ui red med  button" value="Delete" type="submit">
+        </form>
+        <form class="ui form" action="/genre">
+            <input class="ui blue med  button" value="Cancel" type="submit">
+        </form>
+        <% }; %>
+    </div>
+
+<% include partials/footer %>
+

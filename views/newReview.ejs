@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+    <div class="ui main text container segment">
+           <div class="ui huge header">Add New Review
+        </div>
+        <form class="ui form" action="/addReview" method="POST">
+            <div class="field">
+                <label>Game Name</label>
+                <select name="gameID">
+                    <optgroup>
+                        <option value=""> Select Game </option>
+                        <% gameList.forEach(function(list){ %>
+                        <option value="<%= list.gameID %>"><%= list.name %></option>
+                        <% }); %>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="field">
+                <label>IGN Score</label>
+                <input type="text" name="score" required>
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" required></textarea>
+            </div>
+
+            <input class="ui red med basic button" type="submit">
+        </form>
+        <form class="ui form" action="/review">
+            <input class="ui blue med  button" value="Cancel" type="submit">
+        </form>
+    </div>
+
+<% include partials/footer %>
+

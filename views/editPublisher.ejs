@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<% for(var i = 0; i < context.length; i++){ %>
+    <div class="ui main text container segment">
+           <div class="ui huge header">Edit: <%= context[i].name %>
+        </div>
+        <form class="ui form" action="/updatePublisher/<%= context[i].publisherID %>" method="POST">
+            <div class="field">
+                <label>Name</label>
+                <input type="text" name="name" value="<%= context[i].name %>" required>
+            </div>
+            <div class="field">
+                <label>Location</label>
+                <input type="text" name="location" value="<%= context[i].location %>" required>
+            </div>
+            <div class="field">
+                <label>Year Established</label>
+                <input type="date" name="yearEstab" value="<%= context[i].yearEstab %>" required>
+            </div>
+            <input class="ui green med button" value="Save" type="submit">
+        </form>
+        <% }; %>
+        
+        <% for(var i = 0; i < context.length; i++){ %>
+        <form class="ui form" action="/deletePublisher/<%= context[i].publisherID %>" method="GET">
+            <input class="ui red med  button" value="Delete" type="submit">
+        </form>
+        <form class="ui form" action="/publisher">
+            <input class="ui blue med  button" value="Cancel" type="submit">
+        </form>
+        <% }; %>
+    </div>
+
+<% include partials/footer %>
+

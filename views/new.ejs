@@ -1,0 +1,36 @@
+<% include partials/header %>
+
+<% publisher %>
+    <div class="ui main text container segment">
+           <div class="ui huge header">Add New Game
+        </div>
+        <form class="ui form" action="/add" method="POST">
+            <div class="field">
+                <label>Game Name</label>
+                <input type="text" name="name">
+            </div>
+            <div class="field">
+                <label>Release Date</label>
+                <input type="date" name="releasedate">
+            </div>
+            <div class="field">
+                <label>Publisher</label>
+                <select name="publisherID">
+                    <optgroup>
+                        <option value=""> Select Publisher </option>
+                        <% publisher.forEach(function(list){ %>
+                        <option value="<%= list.publisherID %>"><%= list.name %></option>
+                        <% }); %>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="field">
+                <label>Review - drop down menu here for change review score</label>
+            </div>
+
+            <input class="ui red big basic button" type="submit">
+        </form>
+    </div>
+
+<% include partials/footer %>
+

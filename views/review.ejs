@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<div>
+	<h2>Game Reviews</h2>
+	<div class="desc">Please click on a review to edit.</div>
+	<form method="" action="/newReview">
+		<input class="ui blue med button" id="addbtn" value="Add Review" type="submit">
+	</form>
+</div>
+
+ <div class="centered">
+ 	<div class="columns" id="review">
+		<div class="gameName">Game Name</div>
+		<div class="score">IGN Score</div>
+		<div class="description">Description</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="centered">
+ 	<% for(var i = 0; i < context.length; i++){ %>
+ 	<div class="columns-list" id="review">
+		<div class="gameName">
+			<a href="/editReview/<%= context[i] ? context[i].reviewID : ''%>" method="get" action="/editReview">
+				<%= gameList[i].name %>
+			</a>
+		</div>
+		<div class="score"><%= context[i] ? context[i].score : ''%></div>
+		<div class="description"><%= context[i] ? context[i].description : '' %></div>
+	</div>
+	<div class="clear"></div>
+	<% }; %>
+</div>
+
+<% include partials/footer %>
+

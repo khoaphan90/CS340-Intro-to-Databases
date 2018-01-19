@@ -1,0 +1,27 @@
+<% include partials/header %>
+
+    <div class="ui main text container segment">
+           <div class="ui huge header">Add New Platform
+        </div>
+        <form class="ui form" action="/addPlatform" method="POST">
+            <div class="field">
+                <label>Make</label>
+                <input type="text" name="make" required>
+            </div>
+            <div class="field">
+                <label>Name</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="field">
+                <label>Year Released</label>
+                <input type="date" name="year" required>
+            </div>
+            <input class="ui red med basic button" type="submit">
+        </form>
+        <form class="ui form" action="/platform">
+            <input class="ui blue med  button" value="Cancel" type="submit">
+        </form>
+    </div>
+
+<% include partials/footer %>
+
